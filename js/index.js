@@ -3,7 +3,7 @@ const userMenuDropdown = () => {
     if (!userMenuGet) {
         const userMenu = document.createElement("iframe");
         userMenu.setAttribute('id', 'user-menu')
-        userMenu.setAttribute('src', '../components/userMenu.html');
+        userMenu.setAttribute('src', './../components/userMenu.html');
         userMenu.style.opacity = 0;
         userMenu.onload = () => {
             userMenu.style.top = "-" + event.target.contentWindow.document.body.scrollHeight + "px";
