@@ -1,0 +1,13 @@
+#ratings-overview {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 10px;
+}
+
+#notes-input {
+    width: 100%;
+    height: clamp(150px, 450px, 50vh);
+}
