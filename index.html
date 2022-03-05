@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"/>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link id="global-stylesheet" rel="stylesheet" href="css/global-styles.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js"></script>
+
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+        // Single Page Apps for GitHub Pages
+        // MIT License
+        // https://github.com/rafgraph/spa-github-pages
+        // This script checks to see if a redirect is present in the query string,
+        // converts it back into the correct url and adds it to the
+        // browser's history using window.history.replaceState(...),
+        // which won't cause the browser to attempt to load the new url.
+        // When the single page app is loaded further down in this file,
+        // the correct url will be waiting in the browser's history for
+        // the single page app to route accordingly.
+        (function(l) {
+          if (l.search[1] === '/' ) {
+            var decoded = l.search.slice(1).split('&').map(function(s) { 
+              return s.replace(/~and~/g, '&')
+            }).join('?');
+            window.history.replaceState(null, null,
+                l.pathname.slice(0, -1) + decoded + l.hash
+            );
+          }
+        }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
+
+    <!-- IMPORTANT: To add page to router:
+        1. Add <pagename> to pages array below
+        2. Create <pagename>.html file in pages directory
+        3. Create <pagename>.js file in pages directory
+        4. Create <pagename>.css file in pages directory
+        5. Add the following lines of code to <pagename>.js:
+
+            Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
+            }});
+    -->
+    <script> const pages = ['home', 'ratings', 'notes']; </script>
+    <script id="loadPages" src="./js/loadPages.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <nav id="nav-bar">
+            <h1>Mood Tracker</h1>
+            <div id="nav-btns">
+                <a class="grow" onclick="route(event, './')">Home</a>
+                <button id="new-entry-btn" class="grow" onclick="route(event, './ratings')" title="New Entry">New Entry</button>
+                <svg id="user-icon" class="grow" onclick="userMenuDropdown()"
+                    version="1.1" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    width="40" 
+                    height="40"
+                    viewBox="0 0 600 600"
+                    stroke="white"
+                    stroke-width="20"
+                    fill="none">
+
+                    <title>Profile</title>
+                    <circle cx="300" cy="230" r="115" />
+                    <path d="M106.81863443903,481.4 a265,265 1 1,1 386.36273112194,0 a205,205 1 0,0 -386.36273112194,0 z" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </nav>
+        <div id="content">
+            <div id="page"></div>
+        </div>
+    </div>
+
+    <script src="./js/state.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<div id="overview-bar">
+    <input id="date-selection" type="datetime-local" onchange="updateDate(event.target.value)">
+    <button id="ratings-overview" onclick="route(event, './ratings')">
+        <p class="rating-display">Mood: <span id="mood-display"></span></p>
+        <p class="rating-display">Anxiety: <span id="anxiety-display"></span></p>
+    </button>
+</div>
+
+<div id="main-content">
+    <h1>Notes</h1>
+    <textarea id="notes-input" onchange="updateNotes(event.target.value)"></textarea>
+    <button id="submit-button" class="grow">Submit</button>
+</div>
