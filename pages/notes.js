@@ -10,7 +10,7 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
         "Anxiety: " + anxiety);
 
     const submitData = () => {
-        console.log(date);
+        console.log(date.replace('T', ' ') + ':00');
         console.log(mood);
         console.log(anxiety);
         console.log(notes);
