@@ -101,12 +101,12 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
     };
 
     // initialize moodChart
-    let moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
+    const moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
 
     // rebuild moodChart with update configuration
     const rebuildMoodChart = () => {
-        moodChart.destroy();
-        moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
+        // moodChart.destroy();
+        // moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
     };
 
     // rebuilds moodChart with horizontal bars when window is in portrait mode and vertical bars in landscape
