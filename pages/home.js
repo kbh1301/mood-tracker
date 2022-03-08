@@ -21,12 +21,12 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
     yearSelection.value = currentDate.getFullYear();
 
     const data = [
-        {dateTime: '2022-03-01 08:00:00', mood: 2, anxiety: 3, notes: 'testtesttest'},
-        {dateTime: '2022-03-02 08:00:00', mood: 3, anxiety: 2, notes: ''},
-        {dateTime: '2022-03-03 08:00:00', mood: 2, anxiety: 1, notes: ''},
-        {dateTime: '2022-03-04 08:00:00', mood: 6, anxiety: 5, notes: ''},
-        {dateTime: '2022-03-05 08:00:00', mood: 1, anxiety: 1, notes: ''},
-        {dateTime: '2022-03-06 08:00:00', mood: 1, anxiety: 1, notes: ''},
+        {date: '3/1', dateTime: '2022-03-01 08:00:00', mood: 2, anxiety: 3, notes: 'testtesttest'},
+        {date: '3/2', dateTime: '2022-03-02 08:00:00', mood: 3, anxiety: 2, notes: ''},
+        {date: '3/3', dateTime: '2022-03-03 08:00:00', mood: 2, anxiety: 1, notes: ''},
+        {date: '3/4', dateTime: '2022-03-04 08:00:00', mood: 6, anxiety: 5, notes: ''},
+        {date: '3/5', dateTime: '2022-03-05 08:00:00', mood: 1, anxiety: 1, notes: ''},
+        {date: '3/6', dateTime: '2022-03-06 08:00:00', mood: 1, anxiety: 1, notes: ''},
     ];
 
     // moodChart configuration
