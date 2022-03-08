@@ -51,7 +51,7 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
                     label: 'Mood',
                     backgroundColor: '#9AE6F4',
                     borderColor: '#9AE6F4',
-                    data: filteredData,
+                    data: data,
                     parsing: {
                         [scaleAxis + 'AxisKey']: 'mood',
                         [dateAxis + 'AxisKey']: 'date'
@@ -60,7 +60,7 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
                     label: 'Anxiety',
                     backgroundColor: '#48C2D9',
                     borderColor: '#48C2D9',
-                    data: filteredData,
+                    data: data,
                     parsing: {
                         [scaleAxis + 'AxisKey']: 'anxiety',
                         [dateAxis + 'AxisKey']: 'date'
@@ -101,12 +101,12 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
     };
 
     // initialize moodChart
-    const moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
+    let moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
 
     // rebuild moodChart with update configuration
     const rebuildMoodChart = () => {
-        // moodChart.destroy();
-        // moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
+        moodChart.destroy();
+        moodChart = new Chart(document.getElementById('mood-chart'), moodChartConfig());
     };
 
     // rebuilds moodChart with horizontal bars when window is in portrait mode and vertical bars in landscape
