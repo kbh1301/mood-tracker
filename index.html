@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link id="global-stylesheet" rel="stylesheet" href="css/global-styles.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js"></script>
+    <script src="./js/libs/chart.js"></script>
 
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
@@ -39,12 +39,16 @@
         3. Create <pagename>.js file in pages directory
         4. Create <pagename>.css file in pages directory
         5. Add the following lines of code to <pagename>.js:
+        6. Add onclick="route(event, '<pagename>')" where routing functionality is needed
 
             Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
             }});
+        7. NOTE: First name in pages array will be the root/default page
     -->
-    <script> const pages = ['home', 'ratings', 'notes']; </script>
-    <script id="loadPages" src="./js/loadPages.js"></script>
+    <script>
+        
+    </script>
+    
 
     <title>Mood-Tracker</title>
 </head>
@@ -53,9 +57,11 @@
         <nav id="nav-bar">
             <h1>Mood Tracker</h1>
             <div id="nav-btns">
-                <a class="grow" onclick="route(event, './')">Home</a>
-                <button id="new-entry-btn" class="grow" onclick="route(event, './ratings')" title="New Entry">New Entry</button>
-                <svg id="user-icon" class="grow" onclick="userMenuDropdown()"
+                <a id="dashboard-btn" class="grow">Dashboard</a>
+                <h1 style="font-weight: lighter;">|</h1>
+                <a id="entries-btn" class="grow">Entries</a>
+                <button id="new-entry-btn" class="grow" title="New Entry">New Entry</button>
+                <svg id="user-icon" class="grow"
                     version="1.1" 
                     xmlns="http://www.w3.org/2000/svg" 
                     xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -77,7 +83,24 @@
         </div>
     </div>
 
-    <script src="./js/state.js"></script>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/router.js"></script>
+    <script type="module" src="./js/fetchEntriesData.js"></script>
+    <script type="module" src="./js/state.js"></script>
+    <script type="module" src="./js/index.js"></script>
+    
+    <script type="module">
+        import { initialState } from './js/state.js';
+        import { route, loadPageContainer } from './js/router.js';
+        import { userMenuDropdown } from './js/index.js';
+        
+        document.getElementById('dashboard-btn').onclick = () => route(event, 'dashboard');
+        document.getElementById('entries-btn').onclick = () => route(event, 'entries');
+        document.getElementById('new-entry-btn').onclick = () => {
+            initialState();
+            route(event, 'ratings');
+        };
+        document.getElementById('user-icon').onclick = userMenuDropdown;
+    </script>
 </body>
 </html>

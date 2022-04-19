@@ -1,0 +1,31 @@
+#sign-in-screen {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color1);
+    background-image: url("../../media/bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#sign-in-title {
+    background-color: var(--color3);
+    padding: 1rem 5rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    box-shadow: 2px 2px 3px var(--color6);
+}
+
+#sign-in-menu {
+    border-radius: 15px;
+    box-shadow: 2px 2px 3px var(--color6);
+    background-color: var(--color4);
+    border: none;
+}

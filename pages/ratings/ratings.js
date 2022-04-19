@@ -1,7 +1,17 @@
-// exports code to pageFunctions as a function with the name based on filename
-Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
+import { datetimeState, moodState, anxietyState, updateDatetimeState, updateMood, updateAnxiety } from '../../js/state.js';
+import { route } from '../../js/router.js';
+import { datetimeInputFormat, standardizedParse, standardizedFormat, isoParse } from '../../js/dates.js';
+
+export const ratings = () => {
     // display current state value to be submitted
-    document.getElementById("date-selection").value = date;
+    const dateInput = document.getElementById("datetime-selection");
+    const date = standardizedParse(datetimeState).toFormat(datetimeInputFormat);
+
+    // initialize dateInput
+    dateInput.value = date;
+
+    // update datetime state when dateInput is changed
+    dateInput.onchange = (event) => updateDatetimeState(isoParse(event.target.value).toFormat(standardizedFormat));
 
     // number of rating options to be generated
     const maxRatings = 7;
@@ -58,10 +68,17 @@ Object.assign(pageFunctions, {[pages[getScriptName()]]: () => {
         }
         scrollBox.addEventListener('scroll', setShadows);
     }
-    
+
     // render specific number of rating options based on maxRatings
     for(let curRating = 1; curRating <= maxRatings; curRating++) {
-        renderRadioOption(curRating, 'mood', mood);
-        renderRadioOption(curRating, 'anxiety', anxiety);
+        renderRadioOption(curRating, 'mood', moodState);
+        renderRadioOption(curRating, 'anxiety', anxietyState);
     }
-}});
+
+    // add onclick event to submit btn
+    document.getElementById("ratings-submit-btn").onclick = (event) => {
+        updateMood(document.getElementById("mood-selection").mood.value);
+        updateAnxiety(document.getElementById("anxiety-selection").anxiety.value);
+        route(event, 'notes');
+    };
+}
