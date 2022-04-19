@@ -11,3 +11,11 @@
     width: 100%;
     height: clamp(150px, 450px, 50vh);
 }
+
+#submit-button:disabled,
+#submit-button:hover:disabled,
+#submit-button:focus:disabled {
+    background-color: lightslategray !important;
+    cursor: not-allowed;
+    content: 'test'
+}

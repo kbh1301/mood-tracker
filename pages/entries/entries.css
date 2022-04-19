@@ -1,0 +1,66 @@
+#entry-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.accordion-button {
+    text-align: left;
+}
+
+.accordion-button svg {
+    float: right;
+    fill: black;
+    height: 20px;
+}
+.accordion-button svg path {
+    fill: white;
+}
+.accordion-button:after {
+    content: '\2795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.accordion-table {
+    display: block;
+    border: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+    background-color: white;
+    /* overflow-wrap: anywhere; */
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .3s ease-out;
+}
+
+th {
+    padding-top: 1rem;
+}
+
+.am-row {
+
+}
+
+.pm-row {
+
+}
+
+.key-cell {
+    font-weight: bolder;
+    vertical-align: top;
+    border-right: 2px solid;
+    padding: .5rem 1rem;
+}
+
+.value-cell {
+    width: 100%;
+    padding: .5rem 1rem;
+    word-break: break-all;
+}

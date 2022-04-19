@@ -1,28 +1,49 @@
-let mood;
-const updateMood = (input) => {
-    if(input) mood = input;
+import { now, standardizedFormat, standardizedParse } from "./dates.js";
+
+export let usernameState = localStorage.getItem('username') || '';
+export const updateUser = (input) => {
+    if(input) usernameState = input;
 }
 
-let anxiety;
-const updateAnxiety = (input) => {
-    if(input) anxiety = input;
-}
+export let moodState;
+export const updateMood = (input) => {
+    if(input) moodState = input;
+};
 
-let dateInit = new Date()
-let date;
-const updateDate = (input) => {
-    if(input) date = input;
-}
+export let anxietyState;
+export const updateAnxiety = (input) => {
+    if(input) anxietyState = input;
+};
 
-let notes;
-const updateNotes = (input) => {
-    if(input) notes = input;
-}
+// export const getDateInit = () => new Date();
+export let datetimeState;
+let _meridiemState;
 
-const initialState = () => {
-    mood = anxiety = 1;
-    date = new Date(dateInit.getTime() - (dateInit.getTimezoneOffset() * 60000)).toJSON().slice(0,16);
-    notes = "";
-}
+export const updateDatetimeState = (input) => {
+    if(input) {
+        datetimeState = standardizedParse(input).toFormat(standardizedFormat);
+        _meridiemState = '_' + standardizedParse(input).toFormat('a').toLowerCase();
+    };
+};
 
+export let notesState;
+export const updateNotes = (input) => {
+    if(input) notesState = input;
+};
+
+export const initialState = () => {
+    moodState = anxietyState = 1;
+    updateDatetimeState(now().toFormat(standardizedFormat));
+    notesState = "";
+};
 initialState();
+
+export const getEntryData = () => {
+    return JSON.stringify({
+        _meridiem : _meridiemState,
+        time: datetimeState,
+        mood: moodState,
+        anxiety: anxietyState,
+        notes: notesState
+    });
+};
